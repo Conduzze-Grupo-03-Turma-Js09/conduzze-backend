@@ -7,9 +7,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 @Entity({ name: 'tb_motorista' })
 export class Corrida {
   @PrimaryGeneratedColumn()
-=======
-export class Corrida {
->>>>>>> 5882d69942159b8cd6727a2c45afeb435711965d
+
+  export class Corrida {
   id: number;
 
   @IsNotEmpty()
