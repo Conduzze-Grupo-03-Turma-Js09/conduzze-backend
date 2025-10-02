@@ -1,7 +1,7 @@
 import { IsEmail, IsNotEmpty } from 'class-validator';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity({ name: 'tb_corridas' })
+@Entity({ name: 'tb_usuarios' })
 export class Usuario {
   @PrimaryGeneratedColumn()
   id: number;
