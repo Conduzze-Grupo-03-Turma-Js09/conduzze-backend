@@ -24,10 +24,10 @@ export class CorridaController {
     return this.corridaService.create(corrida);
   }
 
-  @Put('/:id')
+  @Put()
   @HttpCode(HttpStatus.OK)
-  update(@Param('id', ParseIntPipe) id: number, @Body() corrida: Corrida): Promise<Corrida> {
-    return this.corridaService.update(id, corrida);
+  update(@Body() corrida: Corrida): Promise<Corrida> {
+    return this.corridaService.update(corrida);
   }
 
   @Delete('/:id')
