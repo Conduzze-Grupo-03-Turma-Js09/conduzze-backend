@@ -10,7 +10,6 @@ export class MotoristaService {
     private readonly motoristaRepository: Repository<Motorista>,
   ) {}
 
-
   async findAll(): Promise<Motorista[]> {
     return await this.motoristaRepository.find();
   }
@@ -23,7 +22,6 @@ export class MotoristaService {
     return motorista;
   }
 
- 
   async findByNome(nome: string): Promise<Motorista> {
     const motorista = await this.motoristaRepository.findOne({
       where: { nome: ILike(`%${nome}%`) },
@@ -36,12 +34,10 @@ export class MotoristaService {
     return motorista;
   }
 
- 
   async create(motorista: Motorista): Promise<Motorista> {
     return await this.motoristaRepository.save(motorista);
   }
 
-  
   async update(motorista: Motorista): Promise<Motorista> {
     const existente = await this.findById(motorista.id);
     return await this.motoristaRepository.save({
@@ -50,9 +46,8 @@ export class MotoristaService {
     });
   }
 
-  
   async delete(id: number): Promise<void> {
-    const motorista = await this.findById(id); // garante que existe
+    const motorista = await this.findById(id);
     await this.motoristaRepository.delete(motorista.id);
   }
 }
