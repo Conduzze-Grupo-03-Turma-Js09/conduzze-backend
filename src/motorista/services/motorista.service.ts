@@ -13,7 +13,7 @@ export class MotoristaService {
   findById() {
     return;
   }
-  findByNomw() {
+  findByNome() {
     return;
   }
 
