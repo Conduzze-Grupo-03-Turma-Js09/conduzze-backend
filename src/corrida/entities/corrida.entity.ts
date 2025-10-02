@@ -21,7 +21,7 @@ export class Corrida {
 
   @Column({ length: 255, nullable: false })
   status: string;
-
+  
   @ManyToOne(() => Usuario, (usuario) => usuario.corrida, {
     onDelete: 'CASCADE',
   })
@@ -31,4 +31,5 @@ export class Corrida {
     onDelete: 'CASCADE',
   })
   motorista: Motorista;
+
 }

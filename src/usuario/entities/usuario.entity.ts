@@ -24,4 +24,5 @@ export class Usuario {
 
   @OneToMany(() => Corrida, (corrida) => corrida.usuario)
   corrida: Corrida;
+  
 }
