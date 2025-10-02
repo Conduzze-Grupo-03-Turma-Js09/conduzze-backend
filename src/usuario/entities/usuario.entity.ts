@@ -9,7 +9,6 @@ export class Corrida {
   @PrimaryGeneratedColumn()
 =======
 export class Corrida {
->>>>>>> 5882d69942159b8cd6727a2c45afeb435711965d
   id: number;
 
   @IsNotEmpty()
