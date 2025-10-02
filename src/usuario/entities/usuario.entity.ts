@@ -1,5 +1,6 @@
 import { IsEmail, IsNotEmpty } from 'class-validator';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Corrida } from '../../corrida/entities/corrida.entity';
 
 @Entity({ name: 'tb_usuarios' })
 export class Usuario {
@@ -20,4 +21,7 @@ export class Usuario {
 
   @Column({ length: 3000, nullable: false })
   foto: string;
+
+  @OneToMany(() => Corrida, (corrida) => corrida.usuario)
+  corrida: Corrida;
 }

@@ -1,5 +1,7 @@
 import { IsNotEmpty } from 'class-validator';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Motorista } from '../../motorista/entities/motorista.entity';
+import { Usuario } from '../../usuario/entities/usuario.entity';
 
 @Entity({ name: 'tb_corridas' })
 export class Corrida {
@@ -19,4 +21,14 @@ export class Corrida {
 
   @Column({ length: 255, nullable: false })
   status: string;
+
+  @ManyToOne(() => Usuario, (usuario) => usuario.corrida, {
+    onDelete: 'CASCADE',
+  })
+  usuario: Usuario;
+
+  @ManyToOne(() => Motorista, (motorista) => motorista.corrida, {
+    onDelete: 'CASCADE',
+  })
+  motorista: Motorista;
 }
