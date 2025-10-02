@@ -1,27 +1,58 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository, ILike } from 'typeorm';
+import { Motorista } from '../entities/motorista.entity';
 
 @Injectable()
 export class MotoristaService {
-  create() {
-    return;
+  constructor(
+    @InjectRepository(Motorista)
+    private readonly motoristaRepository: Repository<Motorista>,
+  ) {}
+
+
+  async findAll(): Promise<Motorista[]> {
+    return await this.motoristaRepository.find();
   }
 
-  findAll() {
-    return;
+  async findById(id: number): Promise<Motorista> {
+    const motorista = await this.motoristaRepository.findOneBy({ id });
+    if (!motorista) {
+      throw new NotFoundException(`Motorista com ID ${id} não encontrado`);
+    }
+    return motorista;
   }
 
-  findById() {
-    return;
-  }
-  findByNomw() {
-    return;
+ 
+  async findByNome(nome: string): Promise<Motorista> {
+    const motorista = await this.motoristaRepository.findOne({
+      where: { nome: ILike(`%${nome}%`) },
+    });
+
+    if (!motorista) {
+      throw new NotFoundException(`Motorista com nome '${nome}' não encontrado`);
+    }
+
+    return motorista;
   }
 
-  update() {
-    return;
+ 
+  async create(motorista: Motorista): Promise<Motorista> {
+    return await this.motoristaRepository.save(motorista);
   }
 
-  delete() {
-    return;
+  
+  async update(motorista: Motorista): Promise<Motorista> {
+    const existente = await this.findById(motorista.id);
+    return await this.motoristaRepository.save({
+      ...existente,
+      ...motorista,
+    });
+  }
+
+  
+  async delete(id: number): Promise<void> {
+    const motorista = await this.findById(id); // garante que existe
+    await this.motoristaRepository.delete(motorista.id);
   }
 }
