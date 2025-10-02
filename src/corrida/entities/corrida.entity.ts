@@ -1,30 +1,27 @@
+import { Module } from '@nestjs/common';
+import { CorridaController } from './controllers/corrida.controller';
+import { Corrida } from './entities/corrida.entity';
+import { CorridaService } from './services/corrida.service';
+import { TypeOrmModule } from '@nestjs/typeorm';
+
+@Entity({ name: 'tb_corrida' })
 export class Corrida {
+  @PrimaryGeneratedColumn()
+
+  export class Corrida {
   id: number;
-  origem: string;
+
+  @IsNotEmpty()
+  @Column({ length: 255, nullable: false })
   destino: string;
-  valor: number;
-  status: string;
-  motoristaId: number;
-  usuarioId: number;
 
-  constructor(id: number, origem: string, destino: string, valor: number, status: string, motoristaId: number, usuarioId: number) {
-    this.id = id;
-    this.origem = origem;
-    this.destino = destino;
-    this.valor = valor;
-    this.status = status;
-    this.motoristaId = motoristaId;
-    this.usuarioId = usuarioId;
-  }
+  @IsNotEmpty()
+  @Column({ length: 255, nullable: false })
+   origem: string;
 
-  exibirDetalhes(): void {
-    console.log(`--- Corrida ---`);
-    console.log(`ID: ${this.id}`);
-    console.log(`Origem: ${this.origem}`);
-    console.log(`Destino: ${this.destino}`);
-    console.log(`Valor: R$ ${this.valor.toFixed(2)}`);
-    console.log(`Status: ${this.status}`);
-    console.log(`ID do Motorista: ${this.motoristaId}`);
-    console.log(`ID do Usuário: ${this.usuarioId}`);
-  }
+  @Column({ type: 'date', nullable: false })
+  valor: Number;
+
+  @Column({ length: 255, nullable: false })
+  status: number;
 }
