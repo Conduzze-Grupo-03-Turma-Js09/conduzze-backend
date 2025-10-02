@@ -18,30 +18,6 @@ export class CorridaController {
     return this.corridaService.findById(id);
   }
 
-  @Get('/origem/:origem')
-  @HttpCode(HttpStatus.OK)
-  findByOrigem(@Param('origem') origem: string): Promise<Corrida[]> {
-    return this.corridaService.findByOrigem(origem);
-  }
-
-  @Get('/destino/:destino')
-  @HttpCode(HttpStatus.OK)
-  findByDestino(@Param('destino') destino: string): Promise<Corrida[]> {
-    return this.corridaService.findByDestino(destino);
-  }
-
-  @Get('/valor/:valor')
-  @HttpCode(HttpStatus.OK)
-  findByValor(@Param('valor', ParseFloatPipe) valor: number): Promise<Corrida[]> {
-    return this.corridaService.findByValor(valor);
-  }
-
-  @Get('/status/:status')
-  @HttpCode(HttpStatus.OK)
-  findByStatus(@Param('status') status: string): Promise<Corrida[]> {
-    return this.corridaService.findByStatus(status);
-  }
-
   @Post()
   @HttpCode(HttpStatus.CREATED)
   create(@Body() corrida: Corrida): Promise<Corrida> {
