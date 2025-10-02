@@ -1,23 +1,29 @@
-export class Usuario {
+import { Module } from '@nestjs/common';
+import { UsuarioController } from './controllers/corrida.controller';
+import { Usuario } from './entities/corrida.entity';
+import { UsuarioService } from './services/corrida.service';
+import { TypeOrmModule } from '@nestjs/typeorm';
+
+@Entity({ name: 'tb_corrida' })
+export class Corrida {
+  @PrimaryGeneratedColumn()
+=======
+export class Corrida {
+>>>>>>> 5882d69942159b8cd6727a2c45afeb435711965d
   id: number;
+
+  @IsNotEmpty()
+  @Column({ length: 255, nullable: false })
   nome: string;
-  usuario: string;
+
+  @IsNotEmpty()
+  @Column({ length: 255, nullable: false })
+   usuario: string;
+
+  @Column({ length: 255, nullable: false })
   senha: string;
+
+  @Column({ length: 3000, nullable: false })
   foto: string;
-
-  constructor(id: number, nome: string, usuario: string, senha: string, foto: string) {
-    this.id = id;
-    this.nome = nome;
-    this.usuario = usuario;
-    this.senha = senha;
-    this.foto = foto;
-  }
-
-  exibirDetalhes(): void {
-    console.log(`--- Usuário ---`);
-    console.log(`ID: ${this.id}`);
-    console.log(`Nome: ${this.nome}`);
-    console.log(`Usuário: ${this.usuario}`);
-    console.log(`Foto: ${this.foto}`);
-  }
 }
+
