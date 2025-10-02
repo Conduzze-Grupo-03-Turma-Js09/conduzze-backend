@@ -38,15 +38,19 @@ export class MotoristaService {
     return await this.motoristaRepository.save(motorista);
   }
   async update(motorista: Motorista): Promise<Motorista> {
-    const existente = await this.findById(motorista.id);
-    return await this.motoristaRepository.save({
-      ...existente,
-      ...motorista,
-    });
+    await this.findById(motorista.id);
+    return await this.motoristaRepository.save(motorista);
   }
 
   async delete(id: number): Promise<void> {
     const motorista = await this.findById(id);
     await this.motoristaRepository.delete(motorista.id);
+  }
+  async contagemCorridas(id: number): Promise<Motorista | null> {
+    return this.motoristaRepository
+      .createQueryBuilder('m')
+      .where('m.id = :id', { id })
+      .loadRelationCountAndMap('m.totalCorridas', 'm.corrida')
+      .getOne();
   }
 }

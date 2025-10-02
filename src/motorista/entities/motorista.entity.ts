@@ -18,5 +18,5 @@ export class Motorista {
   avaliacao: number;
 
   @OneToMany(() => Corrida, (corrida) => corrida.motorista)
-  corrida: Corrida;
+  corrida: Corrida[];
 }

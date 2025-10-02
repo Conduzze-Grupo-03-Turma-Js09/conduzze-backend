@@ -23,6 +23,11 @@ export class MotoristaController {
   findByName(@Param('nome') nome: string): Promise<Motorista> {
     return this.motoristaService.findByNome(nome);
   }
+  @Get('/:id/corridas')
+  @HttpCode(HttpStatus.OK)
+  contagemCorridas(@Param('id') id: number): Promise<Motorista | null> {
+    return this.motoristaService.contagemCorridas(id);
+  }
 
   @Post()
   @HttpCode(HttpStatus.CREATED)

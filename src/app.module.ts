@@ -17,7 +17,7 @@ import { UsuarioModule } from './usuario/usuario.module';
       host: 'localhost',
       port: 3306,
       username: 'root',
-      password: '1234',
+      password: 'root',
       database: 'db_conduzze',
       entities: [Corrida, Motorista, Usuario],
       synchronize: true,
