@@ -1,43 +1,34 @@
-export class Corrida {}
-<<<<<<< HEAD
-=======
+import { IsNotEmpty } from 'class-validator';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Motorista } from '../../motorista/entities/motorista.entity';
+import { Usuario } from '../../usuario/entities/usuario.entity';
 
-class Corrida {
+@Entity({ name: 'tb_corridas' })
+export class Corrida {
+  @PrimaryGeneratedColumn()
   id: number;
-  origem: string;
+
+  @IsNotEmpty()
+  @Column({ length: 255, nullable: false })
   destino: string;
+
+  @IsNotEmpty()
+  @Column({ length: 255, nullable: false })
+  origem: string;
+
+  @Column({ type: 'decimal', precision: 10, scale: 2, nullable: false })
   valor: number;
+
+  @Column({ length: 255, nullable: false })
   status: string;
-  motoristaId: number;
-  usuarioId: number;
 
-  constructor(
-    id: number,
-    origem: string,
-    destino: string,
-    valor: number,
-    status: string,
-    motoristaId: number,
-    usuarioId: number
-  ) {
-    this.id = id;
-    this.origem = origem;
-    this.destino = destino;
-    this.valor = valor;
-    this.status = status;
-    this.motoristaId = motoristaId;
-    this.usuarioId = usuarioId;
-  }
+  @ManyToOne(() => Usuario, (usuario) => usuario.corrida, {
+    onDelete: 'CASCADE',
+  })
+  usuario: Usuario;
 
-  exibirDetalhes(): void {
-    console.log(`--- Corrida ---`);
-    console.log(`ID: ${this.id}`);
-    console.log(`Origem: ${this.origem}`);
-    console.log(`Destino: ${this.destino}`);
-    console.log(`Valor: R$ ${this.valor.toFixed(2)}`);
-    console.log(`Status: ${this.status}`);
-    console.log(`ID do Motorista: ${this.motoristaId}`);
-    console.log(`ID do Usuário: ${this.usuarioId}`);
-  }
+  @ManyToOne(() => Motorista, (motorista) => motorista.corrida, {
+    onDelete: 'CASCADE',
+  })
+  motorista: Motorista;
 }
->>>>>>> origin/main

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -60,28 +59,5 @@ export class UsuarioService {
     }
     usuario.senha = await this.bcrypt.criptografarSenha(usuario.senha);
     return await this.usuarioRepository.save(usuario);
-=======
-import { Injectable } from '@nestjs/common';
-
-@Injectable()
-export class UsuarioService {
-  create() {
-    return;
-  }
-
-  findAll() {
-    return;
-  }
-
-  findById() {
-    return;
-  }
-  findByUsuario() {
-    return;
-  }
-
-  update() {
-    return;
->>>>>>> origin/main
   }
 }
