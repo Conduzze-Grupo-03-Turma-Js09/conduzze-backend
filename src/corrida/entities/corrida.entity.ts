@@ -1,8 +1,4 @@
-export class Corrida {}
-<<<<<<< HEAD
-=======
-
-class Corrida {
+export class Corrida {
   id: number;
   origem: string;
   destino: string;
@@ -11,15 +7,7 @@ class Corrida {
   motoristaId: number;
   usuarioId: number;
 
-  constructor(
-    id: number,
-    origem: string,
-    destino: string,
-    valor: number,
-    status: string,
-    motoristaId: number,
-    usuarioId: number
-  ) {
+  constructor(id: number, origem: string, destino: string, valor: number, status: string, motoristaId: number, usuarioId: number) {
     this.id = id;
     this.origem = origem;
     this.destino = destino;
@@ -40,4 +28,3 @@ class Corrida {
     console.log(`ID do Usuário: ${this.usuarioId}`);
   }
 }
->>>>>>> origin/main

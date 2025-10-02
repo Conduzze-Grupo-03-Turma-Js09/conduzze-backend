@@ -1,8 +1,4 @@
-export class Usuario {}
-<<<<<<< HEAD
-=======
-
-class Usuario {
+export class Usuario {
   id: number;
   nome: string;
   usuario: string;
@@ -25,4 +21,3 @@ class Usuario {
     console.log(`Foto: ${this.foto}`);
   }
 }
->>>>>>> origin/main

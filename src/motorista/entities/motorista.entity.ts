@@ -1,8 +1,4 @@
-export class Motorista {}
-<<<<<<< HEAD
-=======
-
-class Motorista {
+export class Motorista {
   id: number;
   nome: string;
   avaliacao: number;
@@ -20,4 +16,3 @@ class Motorista {
     console.log(`Avaliação: ${this.avaliacao}`);
   }
 }
->>>>>>> origin/main
