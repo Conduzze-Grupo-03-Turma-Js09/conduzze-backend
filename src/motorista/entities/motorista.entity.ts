@@ -1,5 +1,6 @@
 import { IsNotEmpty, Max, Min } from 'class-validator';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Corrida } from '../../corrida/entities/corrida.entity';
 
 @Entity({ name: 'tb_motoristas' })
 export class Motorista {
@@ -15,4 +16,7 @@ export class Motorista {
   @Max(5, { message: 'Avaliação não pode ser maior do que cinco' })
   @Column({ nullable: false })
   avaliaçao: number;
+
+  @OneToMany(() => Corrida, (corrida) => corrida.motorista)
+  corrida: Corrida;
 }

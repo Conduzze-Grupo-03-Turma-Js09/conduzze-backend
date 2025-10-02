@@ -36,7 +36,6 @@ export class MotoristaService {
 
   async create(motorista: Motorista): Promise<Motorista> {
     return await this.motoristaRepository.save(motorista);
-  }
 
   async update(motorista: Motorista): Promise<Motorista> {
     const existente = await this.findById(motorista.id);
