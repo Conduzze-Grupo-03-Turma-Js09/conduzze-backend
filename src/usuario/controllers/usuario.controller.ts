@@ -1,5 +1,5 @@
 import { Body, Controller, Get, HttpCode, HttpStatus, Param, ParseIntPipe, Post, Put } from '@nestjs/common';
-import { Usuario } from './../../usuario/entities/usuario.entity';
+import { Usuario } from '../entities/usuario.entity';
 import { UsuarioService } from './../../usuario/services/usuario.service';
 
 @Controller('/usuarios')

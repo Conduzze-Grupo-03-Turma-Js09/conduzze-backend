@@ -1,14 +1,9 @@
-import { Module } from '@nestjs/common';
-import { CorridaController } from './controllers/corrida.controller';
-import { Corrida } from './entities/corrida.entity';
-import { CorridaService } from './services/corrida.service';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { IsNotEmpty } from 'class-validator';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity({ name: 'tb_corrida' })
+@Entity({ name: 'tb_corridas' })
 export class Corrida {
   @PrimaryGeneratedColumn()
-
-  export class Corrida {
   id: number;
 
   @IsNotEmpty()
@@ -17,11 +12,11 @@ export class Corrida {
 
   @IsNotEmpty()
   @Column({ length: 255, nullable: false })
-   origem: string;
+  origem: string;
 
-  @Column({ type: 'date', nullable: false })
-  valor: Number;
+  @Column({ type: 'decimal', precision: 10, scale: 2, nullable: false })
+  valor: number;
 
   @Column({ length: 255, nullable: false })
-  status: number;
+  status: string;
 }

@@ -1,24 +1,19 @@
-import { Module } from '@nestjs/common';
-import { UsuarioController } from './controllers/corrida.controller';
-import { Usuario } from './entities/corrida.entity';
-import { UsuarioService } from './services/corrida.service';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { IsEmail, IsNotEmpty } from 'class-validator';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity({ name: 'tb_corrida' })
-export class Corrida {
+@Entity({ name: 'tb_corridas' })
+export class Usuario {
   @PrimaryGeneratedColumn()
-=======
-export class Corrida {
->>>>>>> 5882d69942159b8cd6727a2c45afeb435711965d
   id: number;
 
   @IsNotEmpty()
   @Column({ length: 255, nullable: false })
   nome: string;
 
+  @IsEmail()
   @IsNotEmpty()
   @Column({ length: 255, nullable: false })
-   usuario: string;
+  usuario: string;
 
   @Column({ length: 255, nullable: false })
   senha: string;
@@ -26,4 +21,3 @@ export class Corrida {
   @Column({ length: 3000, nullable: false })
   foto: string;
 }
-

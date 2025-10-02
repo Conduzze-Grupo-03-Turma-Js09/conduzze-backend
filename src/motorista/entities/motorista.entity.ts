@@ -1,14 +1,9 @@
-import { Module } from '@nestjs/common';
-import { MotoristaController } from './controllers/corrida.controller';
-import { Motorista } from './entities/corrida.entity';
-import { MotoristaService } from './services/corrida.service';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { IsNotEmpty, Max, Min } from 'class-validator';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity({ name: 'tb_motorista' })
-export class Corrida {
+@Entity({ name: 'tb_motoristas' })
+export class Motorista {
   @PrimaryGeneratedColumn()
-
-  export class Corrida {
   id: number;
 
   @IsNotEmpty()
@@ -16,7 +11,8 @@ export class Corrida {
   nome: string;
 
   @IsNotEmpty()
-  @Column({ type: 'date', nullable: false })
-  avaliaçao: Number;
-
+  @Min(0, { message: 'Avaliação não pode ser menor do que zero' })
+  @Max(5, { message: 'Avaliação não pode ser menor do que cinco' })
+  @Column({ nullable: false })
+  avaliaçao: number;
 }
