@@ -17,7 +17,7 @@ export class Corrida {
 
   @IsNotEmpty()
   @Column({ length: 255, nullable: false })
-   usuario: string;
+  usuario: string;
 
   @Column({ length: 255, nullable: false })
   senha: string;
