@@ -82,7 +82,7 @@ A API do Conduzzé expõe os seguintes endpoints, organizados por suas entidades
 | **Motoristas** | `POST` | `/motoristas` | Cadastra um novo motorista. | `201 Created` |
 | **Motoristas** | `PUT` | `/motoristas` | Atualiza as informações de um motorista existente. | `200 OK` |
 | **Motoristas** | `DELETE` | `/motoristas/:id` | Remove um motorista do sistema. | `204 No Content` |
-| **Motoristas** | `GET` |	`/motoristas/corridas/contagem/:id` |	Retorna um motorista específico e o número total de corridas realizadas por ele.| `200 OK` |	
+| **Motoristas** | `GET` |	`/motoristas/:id/corridas` |	Retorna um motorista específico e o número total de corridas realizadas por ele.| `200 OK` |	
 | **Usuários** | `GET` | `/usuarios/all` | Retorna a lista completa de usuários (passageiros). | `200 OK` |
 | **Usuários** | `GET` | `/usuarios/:id` | Retorna os dados de um usuário específico pelo ID. | `200 OK` |
 | **Usuários** | `POST` | `/usuarios/cadastrar` | Cadastra um novo usuário (passageiro). | `201 Created` |
