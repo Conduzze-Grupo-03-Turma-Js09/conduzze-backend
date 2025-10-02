@@ -12,7 +12,7 @@ export class Motorista {
 
   @IsNotEmpty()
   @Min(0, { message: 'Avaliação não pode ser menor do que zero' })
-  @Max(5, { message: 'Avaliação não pode ser menor do que cinco' })
+  @Max(5, { message: 'Avaliação não pode ser maior do que cinco' })
   @Column({ nullable: false })
   avaliaçao: number;
 }
