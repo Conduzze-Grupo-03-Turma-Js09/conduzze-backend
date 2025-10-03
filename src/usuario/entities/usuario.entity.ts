@@ -23,5 +23,5 @@ export class Usuario {
   foto: string;
 
   @OneToMany(() => Corrida, (corrida) => corrida.usuario)
-  corrida: Corrida;
+  corrida: Corrida[];
 }

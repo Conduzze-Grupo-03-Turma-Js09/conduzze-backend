@@ -26,6 +26,14 @@ export class CorridaService {
         usuario: true,
         motorista: true,
       },
+      select: {
+        usuario: {
+          id: true,
+          nome: true,
+          usuario: true,
+          foto: true,
+        },
+      },
     });
   }
 
@@ -37,6 +45,14 @@ export class CorridaService {
       relations: {
         usuario: true,
         motorista: true,
+      },
+      select: {
+        usuario: {
+          id: true,
+          nome: true,
+          usuario: true,
+          foto: true,
+        },
       },
     });
     if (!corrida) throw new HttpException('Corrida não encontrada!', HttpStatus.NOT_FOUND);
